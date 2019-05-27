@@ -34,11 +34,15 @@ class Playlist:
     def listagem(self):
         return self.__programas
 
-    @property
-    def tamanho(self):
+    # @property
+    # def tamanho(self):
+    #     return len(self.__programas)
+
+    def __len__(self):
         return len(self.__programas)
 
-
+    def __getitem__(self, item):
+        return self.__programas[item]
 
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
@@ -82,10 +86,10 @@ filmes_e_series = [vingadores, atlanta, demolidor, tmep]
 
 playlist_fim_de_semana = Playlist("fim de semana", filmes_e_series)
 
-print(f'Tamanho do playlist: {len(playlist_fim_de_semana.listagem)}')
+print(f'Tamanho do playlist: {len(playlist_fim_de_semana)}')
 
-for programa in playlist_fim_de_semana.listagem:
+for programa in playlist_fim_de_semana:
     #detalhes = programa.duracao if hasattr(programa, "duracao") else programa.temporadas
     print(programa)
 
-print(f'Tá ou não tá? {demolidor in playlist_fim_de_semana.listagem}')
+print(f'Tá ou não tá? {demolidor in playlist_fim_de_semana}') 
